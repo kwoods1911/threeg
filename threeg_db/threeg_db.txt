@@ -1,0 +1,349 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 19, 2021 at 11:20 PM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.4.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `threegfinal`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_packages`
+--
+
+CREATE TABLE `customer_packages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customerid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customername` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `originaltrackingnumber` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `newtrackingnumber` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `packageDescription` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `customer_invoice` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `delivery_method` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customer_packages`
+--
+
+INSERT INTO `customer_packages` (`id`, `customerid`, `customername`, `originaltrackingnumber`, `newtrackingnumber`, `packageDescription`, `created_at`, `updated_at`, `user_id`, `customer_invoice`, `delivery_method`) VALUES
+(27, '456', 'Kevin James', '56890099000', '6052842', 'Laptop', '2021-03-20 02:07:47', '2021-03-20 02:07:47', 7, 'Laptop1616191667.pdf', 'Pick Up'),
+(28, '456', 'Kevin James', '09890123478', '6157181', 'Monitor', '2021-03-20 02:08:27', '2021-03-20 02:08:27', 7, 'Monitor1616191707.pdf', 'Delivery');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2021_02_10_200120_create_customer_packages_table', 1),
+(5, '2021_02_10_202410_add_customername_to_customer_packages', 2),
+(8, '2021_02_10_202830_create_customer_packages_table', 3),
+(9, '2021_02_14_043936_add_user_id_to_customer_packages', 4),
+(10, '2021_02_14_230729_add_customer_invoice_to_customer_packages', 5),
+(11, '2021_02_14_231919_add_delivery_method_to_customer_packages', 6),
+(14, '2021_02_17_011616_add_user_role_to_users_table', 7),
+(16, '2021_02_20_020806_create_received_packages_table', 8),
+(17, '2021_02_21_045247_add_package_weight_to_received_packages', 9),
+(20, '2021_02_24_050523_create_three_g__invoices_table', 10),
+(21, '2021_02_25_024612_create_threeg_invoice_table', 11),
+(22, '2021_02_25_035948_add_custom_rate_to_threeg_invoice', 12),
+(23, '2021_02_25_045306_add_item_value_to_threeg_invoice', 13),
+(26, '2021_03_10_015850_add_package_weight_to_threeg_invoice', 14),
+(27, '2021_03_11_013047_rename_invoice_column', 15),
+(32, '2021_03_11_025427_create_threeg_invoice_table', 16),
+(35, '2021_03_13_191846_create_shipment_report_table', 17);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `received_packages`
+--
+
+CREATE TABLE `received_packages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `managerid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `managername` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customerid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customername` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `newtrackingnumberbarcode` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `packagedescription` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dateofarrival` date NOT NULL,
+  `dateofdeparture` date NOT NULL,
+  `locationstatus` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `originaltrackingnumber` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deliverycustomercollection` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_invoice` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `package_weight` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `received_packages`
+--
+
+INSERT INTO `received_packages` (`id`, `managerid`, `managername`, `customerid`, `customername`, `newtrackingnumberbarcode`, `packagedescription`, `dateofarrival`, `dateofdeparture`, `locationstatus`, `originaltrackingnumber`, `deliverycustomercollection`, `customer_invoice`, `created_at`, `updated_at`, `package_weight`) VALUES
+(26, '3', 'Adebo Woods', '456', 'Kevin James', '6052842', 'Laptop', '2021-03-19', '2021-03-22', 'Miami Warehouse', '56890099000', 'Pick Up', 'Laptop1616191667.pdf', '2021-03-20 02:10:03', '2021-03-20 02:10:03', 10),
+(27, '3', 'Adebo Woods', '456', 'Kevin James', '6157181', 'Monitor', '2021-03-19', '2021-03-22', 'Miami Warehouse', '09890123478', 'Delivery', 'Monitor1616191707.pdf', '2021-03-20 02:10:28', '2021-03-20 02:10:28', 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipment_report`
+--
+
+CREATE TABLE `shipment_report` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `date_of_report` date NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shipment_report`
+--
+
+INSERT INTO `shipment_report` (`id`, `date_of_report`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
+(1, '2021-03-14', '2021-03-17', '2021-03-17', '2021-03-14 07:02:35', '2021-03-17 08:25:00'),
+(2, '2021-03-14', '2021-03-01', '2021-03-02', '2021-03-14 08:25:07', '2021-03-14 08:25:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `threeg_invoice`
+--
+
+CREATE TABLE `threeg_invoice` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `packageid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `managerid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `manager_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `package_tracking_number` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `package_description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `package_weight` int(11) NOT NULL,
+  `item_category` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `shipping_cost` double NOT NULL,
+  `shipping_cost_vat` double NOT NULL,
+  `shipping_cost_total` double NOT NULL,
+  `item_value` double NOT NULL,
+  `customs_rate` double NOT NULL,
+  `customs_tax_amount` double NOT NULL,
+  `customs_tax_amount_vat` double NOT NULL,
+  `customs_tax_total` double NOT NULL,
+  `processing_fee` double NOT NULL,
+  `processing_fee_vat` double NOT NULL,
+  `processing_fee_total` double NOT NULL,
+  `subtotal` double NOT NULL,
+  `subtotal_vat` double NOT NULL,
+  `final_total` double NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `threeg_invoice`
+--
+
+INSERT INTO `threeg_invoice` (`id`, `packageid`, `managerid`, `manager_name`, `customer_id`, `customer_name`, `package_tracking_number`, `package_description`, `package_weight`, `item_category`, `shipping_cost`, `shipping_cost_vat`, `shipping_cost_total`, `item_value`, `customs_rate`, `customs_tax_amount`, `customs_tax_amount_vat`, `customs_tax_total`, `processing_fee`, `processing_fee_vat`, `processing_fee_total`, `subtotal`, `subtotal_vat`, `final_total`, `created_at`, `updated_at`) VALUES
+(11, '26', '3', 'Adebo Woods', '456', 'Kevin James', '6052842', 'Laptop', 12, 'Computer', 14.4, 0.1728, 14.5728, 159, 10, 15.9, 0.1908, 16.0908, 10, 0.12, 10.12, 40.3, 0.4836, 40.7836, '2021-03-20 02:13:07', '2021-03-20 02:14:08'),
+(12, '27', '3', 'Adebo Woods', '456', 'Kevin James', '6157181', 'Monitor', 20, 'Electronics', 24, 0.288, 24.288, 60, 1, 0.6, 0.0072, 0.6072, 10, 0.12, 10.12, 34.6, 0.4152, 35.0152, '2021-03-20 02:15:11', '2021-03-20 02:15:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `user_role` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `user_role`) VALUES
+(1, 'Khari Woods', 'khariwoods3@gmail.com', NULL, '$2y$10$nNvk8N27xrDZPTrJsIlbPunH/oBnlz1vInUfL0.ULZafcDYHI9pK2', NULL, '2021-02-11 23:46:31', '2021-02-11 23:46:31', 'customer'),
+(2, 'Kevin Mitnick', 'kmitnick@gmail.com', NULL, '$2y$10$FBH4Gc/SFfH.WJwyeScLNeeNZmMqGCxFBgNyaDwezVVHL8QxbxO6u', NULL, '2021-02-11 23:47:06', '2021-02-11 23:47:06', 'customer'),
+(3, 'Adebo Woods', 'akapainting@gmail.com', NULL, '$2y$10$vee.EF0iJG68UiMOyqK4h.vmRhtGwW2yK7dKt7AloXhJG41lJVF2y', NULL, '2021-02-17 07:03:52', '2021-02-17 07:03:52', 'admin'),
+(6, 'Janae Knowles', 'jcandace@gmail.com', NULL, '$2y$10$lQWxnATSlKfTR6BmjBxz2epWQCtdSYjWhuyrT9ksuKRjoENd0gf1G', NULL, '2021-03-16 06:56:22', '2021-03-17 07:46:27', 'admin'),
+(7, 'Kevin James', 'kevinjames@gmail.com', NULL, '$2y$10$7CFAMawtit12ncxZ6No2/eQ57WBuefgFLTDNt3KXLFyICnJWr9sKK', NULL, '2021-03-17 07:51:49', '2021-03-17 08:42:31', 'customer');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `customer_packages`
+--
+ALTER TABLE `customer_packages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `received_packages`
+--
+ALTER TABLE `received_packages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `shipment_report`
+--
+ALTER TABLE `shipment_report`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `threeg_invoice`
+--
+ALTER TABLE `threeg_invoice`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `customer_packages`
+--
+ALTER TABLE `customer_packages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `received_packages`
+--
+ALTER TABLE `received_packages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `shipment_report`
+--
+ALTER TABLE `shipment_report`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `threeg_invoice`
+--
+ALTER TABLE `threeg_invoice`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
