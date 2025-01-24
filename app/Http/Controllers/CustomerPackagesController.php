@@ -64,7 +64,7 @@ class CustomerPackagesController extends Controller
         $this->validate($request,[
             'originaltrackingnumber' => 'required',
             'packagedescription' => 'required',
-            'customer_invoice' => 'required|mimes:pdf,xlx,csv|max:2048',
+            // 'customer_invoice' => 'required|mimes:pdf,xlx,csv|max:2048',
             'pickupordelivery'=> 'required'
         ]);
 

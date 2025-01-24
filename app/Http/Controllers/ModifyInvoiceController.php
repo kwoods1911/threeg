@@ -134,10 +134,6 @@ class ModifyInvoiceController extends Controller
      */
     public function show($id)
     {
-        //
-        // $package = ReceivedPackages::find($id);
-        //find invoice number
-        // return view('invoice.showinvoice')->with('package',$package);
 
         $package = ReceivedPackages::find($id);
         $invoice = ThreeG_Invoices::where('packageid',$package->id)->firstOrFail();
@@ -148,7 +144,6 @@ class ModifyInvoiceController extends Controller
             return view('invoice.showinvoice')->with('invoice',$invoice);
         }
 
-        // return view('invoice.showinvoice');
     }
 
     /**
