@@ -39,6 +39,10 @@ class CustomerPackagesController extends Controller
     {
         $user_id = auth()->user()->id;//KW getting user ID
         $user = User::find($user_id);//Finding user object with specific id from Database
+
+        if (!auth()->user()->hasVerifiedEmail()) {
+            Log::info('User email not verified:', ['user' => auth()->user()]);
+        }
         return view('customerpackages.index')->with('customerPackages',$user->customerpackage);//passing in related packages from for customer to page for display.
     }
 
