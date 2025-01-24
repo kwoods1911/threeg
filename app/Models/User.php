@@ -13,8 +13,9 @@ use App\Models\ReceivedPackages;
 use App\Models\ShipmentReport;
 use App\Models\ThreeG_Invoice;
 
-class User extends Authenticatable
-{
+
+
+class User extends Authenticatable implements MustVerifyEmail{
     use HasFactory, Notifiable;
 
     /**
