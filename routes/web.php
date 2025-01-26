@@ -30,7 +30,7 @@ Route::get('/email/verify', function(){
 
 
 // Email verification handling
-Route::get('/email/verify/{id}/{hash}',[VerifyEmailController::class,'verified'])
+Route::get('/email/verify/{id}/{hash}',[VerifyEmailController::class,'verify'])
     ->middleware(['auth','signed'])->name('verification.verify');
 
 

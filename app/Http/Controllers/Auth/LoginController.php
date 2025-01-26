@@ -44,7 +44,7 @@ class LoginController extends Controller
 {
     if (!$user->hasVerifiedEmail()) {
         auth()->logout();
-        return redirect()->route('verification.notice')->with('error', 'Please verify your email firstrrrr.');
+        return redirect()->route('verification.notice')->with('error', 'Please verify your email first.');
     }
 
     // Redirect verified users to their intended page or default route
