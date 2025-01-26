@@ -6,6 +6,9 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\VerifyEmailController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +30,7 @@ Route::get('/email/verify', function(){
 
 
 // Email verification handling
-Route::get('/email/verify/{id}/{hash}',[VerificationController::class,'verify'])
+Route::get('/email/verify/{id}/{hash}',[VerifyEmailController::class,'verified'])
     ->middleware(['auth','signed'])->name('verification.verify');
 
 
@@ -70,9 +73,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware(['auth','verified'])->group(function (){
-    Route::resource('customerpackage','App\Http\Controllers\CustomerPackagesController');//KW full path name is needed.
+   
 });
 
+Route::resource('customerpackage','App\Http\Controllers\CustomerPackagesController');//KW full path name is needed.
 
 
 

@@ -12,7 +12,7 @@ use App\Models\CustomerPackages;
 use App\Models\ReceivedPackages;
 use App\Models\ShipmentReport;
 use App\Models\ThreeG_Invoice;
-
+use App\Notifications\CustomVerifyEmail;
 
 
 class User extends Authenticatable implements MustVerifyEmail{
@@ -61,4 +61,10 @@ class User extends Authenticatable implements MustVerifyEmail{
     public function threeGInvoice(){
         return $this->hasMany(ThreeG_Invoices::class,'customerid');
     }
+
+
+    public function sendEmailVerificationNotification()
+{
+    $this->notify(new CustomVerifyEmail());
+}
 }
