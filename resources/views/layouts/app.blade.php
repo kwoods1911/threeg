@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Three G</title>
 
     <!-- Scripts -->
      <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,7 +23,6 @@
         font-size: 14px;
         /* font-family: "Open Sans", Arial, Tahoma, sans-serif; */
         font-family: 'Roboto', sans-serif;
-
     }
 </style>
 
@@ -33,27 +32,27 @@
         <nav class="navbar navbar-expand-md navbar-light navBarBottom navbar-custom">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Three G Shipping
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                   <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/customerpackage">My Packages</a>
-                    </li>
-                </ul>
-
+                  
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        @if(auth()->check() && auth()->user()->user_role == 'admin')
                         <li class="nav-item">
-                            <a class="nav-link active" href="/home">Dashboard</a>
-                            
+                            <a class="nav-link active" href="/home">Admin Dashboard</a>
                         </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/customerpackage">My Packages</a>
+                        </li>
+                        @endif
+
                         <li class="nav-item">
                             <a class="nav-link" href="/about">About Us</a>
                         </li>
@@ -172,12 +171,6 @@
             <p>
               <a href="/services" class="text-reset">Services</a>
             </p>
-            <p>
-              <a href="#!" class="text-reset">Login</a>
-            </p>
-            <p>
-                <a href="#!" class="text-reset">Register</a>
-              </p>
           </div>
           <!-- Grid column -->
   
@@ -192,9 +185,6 @@
             </p>
             <p>
               <a href="/about" class="text-reset">About Us</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">FAQs</a>
             </p>
           </div>
           <!-- Grid column -->
@@ -227,7 +217,7 @@
   
     <!-- Copyright -->
     <div id="copywright" class="text-center p-4">
-      © 2021 Three G Shipping
+      © 2025 Three G Shipping
     </div>
     <!-- Copyright -->
   </footer>
