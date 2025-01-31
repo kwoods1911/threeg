@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 $trackingNumber = $package->newtrackingnumberbarcode;
 $customerPackageNumber = DB::select("SELECT id FROM customer_packages WHERE newtrackingnumber = $trackingNumber");
 //KW select customer package from
-    
+//Select invoice from customer package
 @endphp
 
 <div class="container">

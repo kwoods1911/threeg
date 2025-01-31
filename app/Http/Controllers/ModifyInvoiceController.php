@@ -134,16 +134,18 @@ class ModifyInvoiceController extends Controller
      */
     public function show($id)
     {
-
+        
         $package = ReceivedPackages::find($id);
-        $invoice = ThreeG_Invoices::where('packageid',$package->id)->firstOrFail();
-
+        $invoice = ThreeG_Invoices::where('packageid',$package->id)->first();
+            
         if(auth()->user()->user_role == 'customer'){
             return redirect('/home');
-        }else{
-            return view('invoice.showinvoice')->with('invoice',$invoice);
         }
-
+        
+        if(is_null($invoice)){
+            return redirect("/inventorymanagement/$id")->with('error', 'Invoice does not exist for this package. You need to create an invoice for this package first.');
+        }
+        return view('invoice.showinvoice')->with('invoice',$invoice);
     }
 
     /**
