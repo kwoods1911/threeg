@@ -13,9 +13,10 @@ $customerPackageNumber = DB::select("SELECT id FROM customer_packages WHERE newt
 @endphp
 
 <div class="container">
-    <a href="/inventorymanagement" class="btn btn-primary">
+<a href="/inventorymanagement" class="btn btn-primary">
     <span><<</span>
-    Go Back</a>
+    Return
+</a>
 
     <h1>Manage Invoice</h1>
     <table class="table table-bordered">
