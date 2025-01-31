@@ -16,8 +16,8 @@
                     @if(auth()->user()->user_role == 'customer')
                         
                         {{-- <p>You are a customer</p> --}}
-                        <h3>View your packagesssss</h3>
-                            <a href="/customerpackage" class="btn btn-primary">Myyyyy Packages</a>
+                        <h3>View your packages</h3>
+                            <a href="/customerpackage" class="btn btn-primary">My Packages</a>
                         @else
                         
                         <p><img class="user-icon"src="{{url('/images/user.PNG')}}" alt="insert background image">
