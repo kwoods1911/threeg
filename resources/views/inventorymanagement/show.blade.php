@@ -27,9 +27,9 @@ $customerPackageNumber = DB::select("SELECT id FROM customer_packages WHERE newt
             </tr>
         </thead>
         <tr>
-            <td><a href="/invoicemanagement/{{$package->id}}" class="btn btn-primary">View Invoice</a></td>
-            <td><a href="/invoicemanagement/createinvoice/{{$package->id}}" class="btn btn-primary">Create Invoice</a></td>
-            <td><a href="/invoicemanagement/{{$package->id}}/edit" class="btn btn-primary">Update Invoice</a></td>
+                <td><a href="/invoicemanagement/createinvoice/{{$package->id}}" class="btn btn-primary">Create Invoice</a></td>
+                <td><a href="/invoicemanagement/{{$package->id}}/edit" class="btn btn-primary">Update Invoice</a></td>
+                <td><a href="/invoicemanagement/{{$package->id}}" class="btn btn-primary">View Invoice</a></td>
         </tr>  
     </table>
     <h1>Shipment Details</h1>
