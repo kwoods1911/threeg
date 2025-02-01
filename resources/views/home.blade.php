@@ -13,8 +13,7 @@
                         </div>
                     @endif
 
-                    @if(auth()->user()->user_role == 'customer')
-                        
+                    @if(auth()->user()->user_role == 'customer') 
                         {{-- <p>You are a customer</p> --}}
                         <h3>View your packages</h3>
                             <a href="/customerpackage" class="btn btn-primary">My Packages</a>
@@ -43,7 +42,6 @@
                                 <a href="/manageaccounts">Manage Accounts</a>
                             </li>
                         </ul>
-                        
                     @endif
                         
                 </div>

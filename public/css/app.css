@@ -135,6 +135,10 @@ grey: #a8a8a8
   border-top: 3px solid #ffcc00;
   background-color: #333;
   color:#fff;
+  text-align: center;
+  width: 100%;
+  position:relative;
+  bottom: 0;
 }
 
 #contact-section{
@@ -476,6 +480,8 @@ svg {
 table {
   border-collapse: collapse;
 }
+
+
 
 
 /* kw adding space between header and footer of the table */

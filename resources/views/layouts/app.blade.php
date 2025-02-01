@@ -105,11 +105,10 @@
     </div>
 
 
-   <!-- Footer -->
-<footer id="footer-custom" class="text-center text-lg-start">
+<!-- Footer -->
+<footer id="footer-custom" class="card-footer text-center text-lg-start">
     <!-- Section: Social media -->
-    <section
-      class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
     >
       <!-- Left -->
       <div class="me-5 d-none d-lg-block">
@@ -204,7 +203,7 @@
             </p>
             <p>
               <i class="fas fa-envelope me-3"></i>
-              info@example.com
+              threeg@info.com
             </p>
             <p><i class="fas fa-phone me-3"></i>1-242-394-0000</p>
           </div>
