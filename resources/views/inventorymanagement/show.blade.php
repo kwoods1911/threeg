@@ -91,7 +91,7 @@ $customerPackageNumber = DB::select("SELECT id FROM customer_packages WHERE newt
             <th>Package Invoice</th>
             <td>
                 @if(count($customerPackageNumber) > 0)
-                    <a target="_blank" href="/show-pdf/{{$customerPackageNumber->id}}" class="btn btn-primary" >View Invoice</a>
+                    <a target="_blank" href="/show-pdf/{{$customerPackageNumber[0]->id}}" class="btn btn-primary" >View Invoice</a>
                 @else
                     No Invoice available.
                 @endif
