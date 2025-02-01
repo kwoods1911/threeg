@@ -20,7 +20,7 @@
                             <a href="/customerpackage" class="btn btn-primary">My Packages</a>
                         @else
                         
-                        <p><img class="user-icon"src="{{url('/images/user.PNG')}}" alt="insert background image">
+                        <p><img class="user-icon"src="{{url('/images/user.png')}}" alt="insert background image">
                             Manager: {{auth()->user()->name}}
                         </p>
                         <h5>Admin Dashboard</h5>
