@@ -8,6 +8,7 @@ use App\Models\CustomerPackage;
 use Illuminate\Support\Facades\DB;
 $trackingNumber = $package->newtrackingnumberbarcode;
 $customerPackageNumber = DB::select("SELECT id FROM customer_packages WHERE newtrackingnumber = $trackingNumber");
+
 //KW select customer package from
 //Select invoice from customer package
 @endphp
@@ -18,28 +19,35 @@ $customerPackageNumber = DB::select("SELECT id FROM customer_packages WHERE newt
     Return
 </a>
 
-    <h1>Manage Invoice</h1>
-    <table class="table table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th>View Invoice</th>
-                <th>Create Invoice</th>
-                <th>Update Invoice</th>
-            </tr>
-        </thead>
-        <tr>
-                <td><a href="/invoicemanagement/createinvoice/{{$package->id}}" class="btn btn-primary">Create Invoice</a></td>
-                <td><a href="/invoicemanagement/{{$package->id}}/edit" class="btn btn-primary">Update Invoice</a></td>
-                <td><a href="/invoicemanagement/{{$package->id}}" class="btn btn-primary">View Invoice</a></td>
-        </tr>  
-    </table>
-    <h1>Shipment Details</h1>
+            <div class="p-3 mb-2 bg-secondary-subtle text-secondary-emphasis">
+                <h1>Manage Invoice</h1>
+                    <table class="table table-bordered">
+                        <tr>
+                                <td><a href="/invoicemanagement/createinvoice/{{$package->id}}" class="btn btn-primary">Create Invoice</a></td>
+                                <td><a href="/invoicemanagement/{{$package->id}}/edit" class="btn btn-primary">Update Invoice</a></td>
+                                <td><a href="/invoicemanagement/{{$package->id}}" class="btn btn-primary">View Invoice</a></td>
+                        </tr>  
+                    </table>
+                </div>
 
-    <h4>Manager ID: {{$package->managerid}}</h4>
-    <h4>Manager Name: {{$package->managername}}</h4>
+    
     
 
     <table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+            <h1>Shipment Details</h1>
+            </th>
+        </tr>
+        <tr>
+            <th><h4>Manager ID# {{$package->managerid}}</h4></th>
+        </tr>
+
+        <tr>
+            <th><h4>Received By: {{$package->managername}}</h4></th>
+        </tr>
+    </thead>
         <tr>
             <th class="thead-dark">Package ID</th>
             <td>{{$package->id}}</td>
@@ -82,7 +90,11 @@ $customerPackageNumber = DB::select("SELECT id FROM customer_packages WHERE newt
         <tr>
             <th>Package Invoice</th>
             <td>
-                <a target="_blank" href="/show-pdf/{{$customerPackageNumber[0]->id}}" class="btn btn-primary" >View Invoice</a>
+                @if(count($customerPackageNumber) > 0)
+                    <a target="_blank" href="/show-pdf/{{$customerPackageNumber->id}}" class="btn btn-primary" >View Invoice</a>
+                @else
+                    No Invoice available.
+                @endif
             </td>
         </tr>
     

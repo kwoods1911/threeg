@@ -158,15 +158,21 @@ class ModifyInvoiceController extends Controller
     {
         //KW run query on threeg_invoice database to find invoice number that corresponds to package number
         // $invoice = ThreeG_Invoices::find($id);
-        $invoice = DB::select("SELECT * FROM threeg_invoice WHERE packageid = $id");
-        // fetch_assoc
+        
         $package = ReceivedPackages::find($id);
-
+        $invoice = $invoice = ThreeG_Invoices::where('packageid',$package->id)->first();
+        // fetch_assoc
+        
+        
         if(auth()->user()->user_role == 'customer'){
             return redirect('/home');
-        }else{
-            return view('invoice.updateinvoice')->with('invoice',$invoice)->with('package',$package);
         }
+
+        if(is_null($invoice) || is_null($package) ){
+            return redirect("/inventorymanagement/$id")->with('error', 'Invoice does not exist for this package. You need to create an invoice for this package first.');
+        }
+
+        return view('invoice.updateinvoice')->with('invoice',$invoice)->with('package',$package);
     }
 
     /**
