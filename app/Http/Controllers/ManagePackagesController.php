@@ -31,7 +31,7 @@ class ManagePackagesController extends Controller
     {
         //KW- import all records from customer_packages database.
         //KW send records to managepackages.index
-        $customerPackages = CustomerPackage::all();
+        $customerPackages = CustomerPackage::where('package_received', '0')->get();
         //KW run a comparison to what exist already in the packages database.
         //KW if the package already exists then filter it out from the results.
         $receivedPackages = ReceivedPackages::all();

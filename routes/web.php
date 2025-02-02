@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\VerifyEmailController;
 
-
+use App\Http\Controllers\SearchIncommingPackages;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,6 +85,9 @@ Route::resource('inventorymanagement','App\Http\Controllers\InventoryManagementC
 Route::resource('invoicemanagement','App\Http\Controllers\ModifyInvoiceController');
 Route::resource('shipmentreport','App\Http\Controllers\ShipmentReportController');
 Route::resource('manageaccounts','App\Http\Controllers\ManageAccountsController');
+
+
+Route::get('/search-incoming-packages', [SearchIncommingPackages::class, 'search'])->name('search.incoming.packages');
 
 
 

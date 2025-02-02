@@ -20,19 +20,32 @@ $dateOfDeparture = 'N/A';
 <div class="container">
     <div class="package-details-container">
         <h1>Package Details</h1>
-        <p>Package Description: {{$customerPackages->packageDescription}}</p>
-            <p>Location Status:{{$locationStatus}}</p> 
-            <p>Date of departure: {{$dateOfArrival}}</p>
-            <p>Estimated Time of arrival: {{$dateOfDeparture}}</p>
+
+        <a href="/customerpackage" class="btn btn-primary"> 
+                <span> <<</span>Return
+        </a>
         
-        
-            <a href="/customerpackage" class="btn btn-primary"> 
-                <span>
-                    <<
-                </span>
-                Go Back</a>
-            <a class="btn btn-primary" href="/show-pdf/{{$customerPackages->id}}">
-                View Invoice</a>
+        <table class="table table-striped table-hover table-override">
+            <thead>
+                <tr>
+                    <td>Package Description:</td>
+                    <td>Location Status:</td>
+                    <td>Date of departure: </td>
+                    <td>Estimated Time of arrival: </td>
+                    <td>Uploaded Invoice</td>
+                </tr>
+            </thead>
+
+            <tr>
+                <td>{{$customerPackages->packageDescription}}</td>
+                <td>{{$locationStatus}}</td>
+                <td>{{$dateOfArrival}}</td>
+                <td>{{$dateOfDeparture}}</td>
+                <td> <a class="btn btn-primary" href="/show-pdf/{{$customerPackages->id}}">
+                View Invoice</a></td>
+            </tr>
+        </table>
+           
         
         </div>
 </div>

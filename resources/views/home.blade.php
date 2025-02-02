@@ -13,14 +13,13 @@
                         </div>
                     @endif
 
-                    @if(auth()->user()->user_role == 'customer')
-                        
+                    @if(auth()->user()->user_role == 'customer') 
                         {{-- <p>You are a customer</p> --}}
                         <h3>View your packages</h3>
                             <a href="/customerpackage" class="btn btn-primary">My Packages</a>
                         @else
                         
-                        <p><img class="user-icon"src="{{url('/images/user.PNG')}}" alt="insert background image">
+                        <p><img class="user-icon"src="{{url('/images/user.png')}}" alt="insert background image">
                             Manager: {{auth()->user()->name}}
                         </p>
                         <h5>Admin Dashboard</h5>
@@ -43,7 +42,6 @@
                                 <a href="/manageaccounts">Manage Accounts</a>
                             </li>
                         </ul>
-                        
                     @endif
                         
                 </div>
