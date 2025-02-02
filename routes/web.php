@@ -48,18 +48,6 @@ Route::get('/about', 'App\Http\Controllers\PagesController@about');//KW Route to
 
 Route::get('/services', 'App\Http\Controllers\PagesController@services');//KW Route to services page of application.
 
-Route::get('/show-pdf/{id}','App\Http\Controllers\PagesController@viewpdf');//KW route for viewing the customer's uploaded pdf.
-
-Route::get('/show-bill/{trackingnumber}','App\Http\Controllers\PagesController@viewbill');
-
-
-Route::get('/managepackages/create/{id}','App\Http\Controllers\ManagePackagesTest@create');
-// Route::get('/managepackages/store/{id}','App\Http\Controllers\ManagePackagesTest@store');
-
-
-
-//KW route for creating invoice.
-Route::get('/invoicemanagement/createinvoice/{id}','App\Http\Controllers\InvoiceController@createInvoice');
 
 
 
@@ -73,21 +61,33 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware(['auth','verified'])->group(function (){
-   
+    Route::resource('managepackages','App\Http\Controllers\ManagePackagesController');
+    Route::resource('inventorymanagement','App\Http\Controllers\InventoryManagementController');
+    Route::resource('invoicemanagement','App\Http\Controllers\ModifyInvoiceController');
+    Route::resource('shipmentreport','App\Http\Controllers\ShipmentReportController');
+    Route::resource('manageaccounts','App\Http\Controllers\ManageAccountsController');
+    Route::resource('customerpackage','App\Http\Controllers\CustomerPackagesController');//KW full path name is needed.
+
+
+    Route::get('/show-bill/{trackingnumber}','App\Http\Controllers\PagesController@viewbill');
+    Route::get('/show-pdf/{id}','App\Http\Controllers\PagesController@viewpdf');//KW route for viewing the customer's uploaded pdf.
+    Route::get('/managepackages/create/{id}','App\Http\Controllers\ManagePackagesTest@create');
+
+//KW route for creating invoice.
+    Route::get('/invoicemanagement/createinvoice/{id}','App\Http\Controllers\InvoiceController@createInvoice');
+    Route::get('/search-incoming-packages', [SearchIncommingPackages::class, 'search'])->name('search.incoming.packages');
+
 });
 
-Route::resource('customerpackage','App\Http\Controllers\CustomerPackagesController');//KW full path name is needed.
 
 
 
-Route::resource('managepackages','App\Http\Controllers\ManagePackagesController');
-Route::resource('inventorymanagement','App\Http\Controllers\InventoryManagementController');
-Route::resource('invoicemanagement','App\Http\Controllers\ModifyInvoiceController');
-Route::resource('shipmentreport','App\Http\Controllers\ShipmentReportController');
-Route::resource('manageaccounts','App\Http\Controllers\ManageAccountsController');
 
 
-Route::get('/search-incoming-packages', [SearchIncommingPackages::class, 'search'])->name('search.incoming.packages');
+
+
+
+
 
 
 

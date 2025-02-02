@@ -59,8 +59,13 @@ class InventoryManagementController extends Controller
      */
     public function show($id)
     {
+        
         //KW find packaged based on ID passed in through the parameter
         $package = ReceivedPackages::find($id);
+
+        if(is_null($package)){
+            return redirect('/inventorymanagement')->with('error','Package not found !');
+        }
         if(auth()->user()->user_role == 'customer'){
             return redirect('/home');
         }else{
@@ -78,6 +83,10 @@ class InventoryManagementController extends Controller
     {
         //KW find packaged based on ID passed in through the parameter
         $package = ReceivedPackages::find($id);
+
+        if(is_null($package)){
+            return redirect('/inventorymanagement')->with('error','Package not found !');
+        }
         if(auth()->user()->user_role == 'customer'){
             return redirect('/home');
         }else{
