@@ -180,7 +180,7 @@
               Useful links
             </h6>
             <p>
-              <a href="#!" class="text-reset">Customs Duty Rates</a>
+              <a href="https://importable.app/bahamas/customs/duty-rates" class="text-reset">Customs Duty Rates</a>
             </p>
             <p>
               <a href="/about" class="text-reset">About Us</a>
@@ -203,9 +203,9 @@
             </p>
             <p>
               <i class="fas fa-envelope me-3"></i>
-              threeg@info.com
+              info@threeg.com
             </p>
-            <p><i class="fas fa-phone me-3"></i>1-242-394-0000</p>
+            <p><i class="fas fa-phone me-3"></i>1-242-394-SHIP</p>
           </div>
           <!-- Grid column -->
         </div>
