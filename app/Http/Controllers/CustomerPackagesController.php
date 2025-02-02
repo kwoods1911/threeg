@@ -111,9 +111,13 @@ class CustomerPackagesController extends Controller
     public function show($id)
     {
         $customerPackages = CustomerPackage::find($id);
+        if(is_null($customerPackages)) return redirect('/customerpackage')->with('error','Unauthorized page.');
+        
         $trackingnumber = $customerPackages->newtrackingnumber;
         //KW run query on the received_packages table to find the matching information.
         $packageInformation = DB::select("SELECT * FROM received_packages WHERE newtrackingnumberbarcode = $trackingnumber");
+        
+        
         return view('customerpackages.show')->with('customerPackages',$customerPackages)
                 ->with('packageInformation',$packageInformation);
     }

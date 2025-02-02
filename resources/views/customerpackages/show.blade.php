@@ -25,13 +25,13 @@ $dateOfDeparture = 'N/A';
                 <span> <<</span>Return
         </a>
         
-        <table class="table table-striped table-hover table-override">
-            <thead>
+        <table class="table table-hover">
+            <thead class="table-primary">
                 <tr>
-                    <td>Package Description:</td>
-                    <td>Location Status:</td>
-                    <td>Date of departure: </td>
-                    <td>Estimated Time of arrival: </td>
+                    <td>Package Description</td>
+                    <td>Location Status</td>
+                    <td>Date of departure</td>
+                    <td>Estimated time of Delivery</td>
                     <td>Uploaded Invoice</td>
                 </tr>
             </thead>
