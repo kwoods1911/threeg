@@ -82,18 +82,20 @@ class ShipmentReportController extends Controller
      */
     public function show($id)
     {
-        //KW based on shipment report id pull data from database and run a query that will join tables.
-        //KW display results of joined tables on the page.
-        //KW give user the option to schedule.
+       
 
         $reportParameters = ShipmentReport::find($id);
-    // return view('shipmentreport.show')->('report_data',/**return results from DB query */);
+        if(is_null( $reportParameters )){
+            return redirect('/shipmentreport')->with('error','Report not found !');
+        }
         $startDate = $reportParameters->start_date;
         $endDate = $reportParameters->end_date;
         
+
+       
         
-        //KW - run DB query to join table date.
-        //KW pass fetched data to the redirected page.
+        
+
         $reportData = DB::table('received_packages')
                     ->join('threeg_invoice','threeg_invoice.packageid', '=', 'received_packages.id')
                     ->select('received_packages.*', 'threeg_invoice.final_total')
@@ -121,6 +123,10 @@ class ShipmentReportController extends Controller
     {
         $report_parameters = ShipmentReport::find($id);
 
+
+        if(is_null( $report_parameters)){
+            return redirect('/shipmentreport')->with('error','Report not found !');
+        }
         if(auth()->user()->user_role == 'customer'){
             return redirect('/home');
         }else{

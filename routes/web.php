@@ -70,10 +70,9 @@ Route::middleware(['auth','verified'])->group(function (){
 
 
     Route::get('/show-bill/{trackingnumber}','App\Http\Controllers\PagesController@viewbill');
-    Route::get('/show-pdf/{id}','App\Http\Controllers\PagesController@viewpdf');//KW route for viewing the customer's uploaded pdf.
+    Route::get('/show-pdf/{id}','App\Http\Controllers\PagesController@viewpdf');
     Route::get('/managepackages/create/{id}','App\Http\Controllers\ManagePackagesTest@create');
 
-//KW route for creating invoice.
     Route::get('/invoicemanagement/createinvoice/{id}','App\Http\Controllers\InvoiceController@createInvoice');
     Route::get('/search-incoming-packages', [SearchIncommingPackages::class, 'search'])->name('search.incoming.packages');
 
