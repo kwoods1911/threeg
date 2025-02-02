@@ -10,6 +10,10 @@ class SearchIncommingPackages extends Controller
 {
     public function search(Request $request)
     {
+
+        if(auth()->user()->user_role == 'customer'){
+            return redirect('/')->with('error','User not found !');
+        }
         
         $customerName = $request->input('customer_name');
         $trackingNumber = $request->input('tracking_number');

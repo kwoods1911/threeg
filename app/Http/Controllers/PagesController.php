@@ -46,6 +46,11 @@ class PagesController extends Controller
     public function viewpdf($id){
         //TODO: refactor so that pdf is retrieved from s3 rather than local environment.
         $fileName = DB::select("SELECT customer_invoice FROM customer_packages WHERE id = $id");
+
+        if($fileName == null){
+            return redirect('/customerpackage')->with('error','File not found !');
+        }
+
         $headers = [
             'Content-Type' => 'application/jpeg',
             'Content-Disposition' => 'attachment; filename="'.$fileName[0]->customer_invoice . '"',
@@ -57,7 +62,10 @@ class PagesController extends Controller
 
     public function viewbill($trackingnumber){
         //KW select $id where tracking number is equal to $id.
-        $invoiceID = DB::select("SELECT id FROM threeg_invoice WHERE  package_tracking_number = $trackingnumber");
+        $invoiceID = DB::select("SELECT id FROM threeg_invoice WHERE  package_tracking_number = $trackingnumber AND customer_id = ".auth()->user()->id);
+        
+     
+
         if($invoiceID == null){
             return view('customerpackages.invoicepending');
         }else{
