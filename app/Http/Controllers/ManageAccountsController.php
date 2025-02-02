@@ -103,7 +103,9 @@ class ManageAccountsController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-
+        if(is_null( $user)){
+            return redirect('/manageaccounts')->with('error','User not found !');
+        }
         if(auth()->user()->user_role == 'customer'){
             return redirect('/home');
         }else{
@@ -120,6 +122,10 @@ class ManageAccountsController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+
+        if(is_null( $user)){
+            return redirect('/manageaccounts')->with('error','User not found !');
+        }
         if(auth()->user()->user_role == 'customer'){
             return redirect('/home');
         }else{

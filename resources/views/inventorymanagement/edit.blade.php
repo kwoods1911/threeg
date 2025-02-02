@@ -3,9 +3,8 @@
     <div class="container">
         <h1>Edit Package</h1>
         <a href="/inventorymanagement" class="btn btn-primary">
-            <span><<</span>
-            Go Back</a>
-        
+            <span><<</span> Return </a>
+
         {{-- {!! Form::open(['action' => ['App\Http\Controllers\ManageAccountsController@update', $account->id], 'method' => 'POST']) !!} --}}
         
         {!! Form::open(['action' => ['App\Http\Controllers\InventoryManagementController@update',$package->id], 'method' => 'POST']) !!}
@@ -13,28 +12,45 @@
             {{Form::hidden('customerid',$package->id,['class' => 'form-control', 'placeholder' => 'Customer id'])}}
         </div>
         <h6>
-            Three G Tracking #:
+            
             {{Form::hidden('newtrackingnumber',$package->newtrackingnumberbarcode,['class' => 'form-control', 'placeholder' => 'Customer id'])}}
         </h6>
-        <h3>{{$package->newtrackingnumberbarcode}}</h3>
+     
         
         <h6>
-            Original Tracking #:
             {{Form::hidden('originaltrackingnumber',$package->originaltrackingnumber,['class' => 'form-control', 'placeholder' => 'Customer id'])}}
         </h6>
-        <h3>{{$package->originaltrackingnumber}}</h3>
+     
         
         <h6>
-            Customer Name: 
             {{Form::hidden('customername',$package->customername,['class' => 'form-control', 'placeholder' => 'Customer id'])}}
         </h6>
-        <h3>{{$package->customername}}</h3>
+    
         
         <h6>
-            Package Description: 
             {{Form::hidden('customername',$package->packagedescription,['class' => 'form-control', 'placeholder' => 'Customer id'])}}
         </h6>
-        <h3>{{$package->packagedescription}}</h3>
+     
+
+
+
+        <table class="table table-striped table-hover table-override">
+                <thead>
+                    <tr>
+                        <td>Three G Tracking #:</td>
+                        <td> Original Tracking #:</td>
+                        <td>Customer Name: </td>
+                        <td>Package Description: </td>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td>{{$package->newtrackingnumberbarcode}}</td>
+                    <td>{{$package->originaltrackingnumber}}</td>
+                    <td>{{$package->customername}}</td>
+                    <td>{{$package->packagedescription}}</td>
+                </tr>
+            </table>
         
         <div class="form-group">
             {{Form::label('packageweight', 'Package Weight')}} <span>:</span>
