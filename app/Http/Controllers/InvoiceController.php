@@ -16,6 +16,11 @@ class InvoiceController extends Controller
     public function createInvoice($id){
         //KW - function responsible for creating invoices
         $package = ReceivedPackages::find($id);
+
+        if(is_null($package)){
+            return redirect('/inventorymanagement')->with('error','Package not found !');
+        }
+        
         if(auth()->user()->user_role == 'customer'){
             return redirect('/home');
         }else{

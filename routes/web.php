@@ -35,6 +35,7 @@ Route::get('/email/verify/{id}/{hash}',[VerifyEmailController::class,'verify'])
 
 
 
+
 Route::post('/email/resent',function(){
     Auth::user()->sendEmailVerificationNotification();
     return back()->with('status','Verification link sent !');
@@ -61,6 +62,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware(['auth','verified'])->group(function (){
+
+    Route::get('/managepackages/create/{id}','App\Http\Controllers\ManagePackagesTest@create');
     Route::resource('managepackages','App\Http\Controllers\ManagePackagesController');
     Route::resource('inventorymanagement','App\Http\Controllers\InventoryManagementController');
     Route::resource('invoicemanagement','App\Http\Controllers\ModifyInvoiceController');
@@ -71,7 +74,7 @@ Route::middleware(['auth','verified'])->group(function (){
 
     Route::get('/show-bill/{trackingnumber}','App\Http\Controllers\PagesController@viewbill');
     Route::get('/show-pdf/{id}','App\Http\Controllers\PagesController@viewpdf');
-    Route::get('/managepackages/create/{id}','App\Http\Controllers\ManagePackagesTest@create');
+   
 
     Route::get('/invoicemanagement/createinvoice/{id}','App\Http\Controllers\InvoiceController@createInvoice');
     Route::get('/search-incoming-packages', [SearchIncommingPackages::class, 'search'])->name('search.incoming.packages');

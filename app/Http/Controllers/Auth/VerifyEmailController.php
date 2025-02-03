@@ -29,20 +29,11 @@ class VerifyEmailController extends Controller
     }
 
 
-    public function verify(Request $request)
+    public function verify(EmailVerificationRequest $request)
 {
-    $user = $request->user();
-    if ($user->hasVerifiedEmail()) {
-        return response('Email already verified.');
-    }
 
-    $user->markEmailAsVerified(); // This should update `email_verified_at`
+    $request->fulfill();
+    return redirect('/home')->with('status', 'Your email has been verified!');
 
-    // Log for debugging
-    Log::info('User verified: ' . $user->email);
-
-    event(new Verified($user));
-
-    return redirect('/')->with('verified', true);
 }
 }

@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Support\Facades\Log;
 
 class Handler extends ExceptionHandler
 {
@@ -41,6 +42,7 @@ class Handler extends ExceptionHandler
 
     protected function unauthenticated($request, AuthenticationException $exception)
 {
+ 
     return $request->expectsJson()
         ? response()->json(['message' => 'Unauthenticated.'], 401)
         : redirect()->guest(route('login'))->with('error', 'Please verify your email first.');
