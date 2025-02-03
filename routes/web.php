@@ -35,6 +35,7 @@ Route::get('/email/verify/{id}/{hash}',[VerifyEmailController::class,'verify'])
 
 
 
+
 Route::post('/email/resent',function(){
     Auth::user()->sendEmailVerificationNotification();
     return back()->with('status','Verification link sent !');

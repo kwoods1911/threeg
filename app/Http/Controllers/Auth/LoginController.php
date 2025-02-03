@@ -42,7 +42,9 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
 {
+   
     if (!$user->hasVerifiedEmail()) {
+        
         auth()->logout();
         return redirect()->route('verification.notice')->with('error', 'Please verify your email first.');
     }
