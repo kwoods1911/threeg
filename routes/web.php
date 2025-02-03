@@ -62,6 +62,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware(['auth','verified'])->group(function (){
+
+    Route::get('/managepackages/create/{id}','App\Http\Controllers\ManagePackagesTest@create');
     Route::resource('managepackages','App\Http\Controllers\ManagePackagesController');
     Route::resource('inventorymanagement','App\Http\Controllers\InventoryManagementController');
     Route::resource('invoicemanagement','App\Http\Controllers\ModifyInvoiceController');
