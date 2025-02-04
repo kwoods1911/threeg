@@ -1,8 +1,7 @@
-@extends('layouts.app')
 
-@section('content')
-{{-- <a href="/inventorymanagement/{{$invoice->packageid}}" class="btn btn-primary">Go Back</a> --}}
 
+
+<body>
 <div class="container">
     <div class="view-bill-container">
         <h1>THREE G SHIPPING LTD.</h1>
@@ -80,10 +79,10 @@
         Package MUST BE collected within 5 business days of arriving to Nassau. Packages left after 30days will be sold to cover the costs.
     </p>
     
-    {{-- <h3>Delete Invoice:</h3>
-                {!!Form::open(['action' => ['App\Http\Controllers\ModifyInvoiceController@destroy', $invoice->id], 'method' => 'POST'])!!}
-                {{Form::hidden('_method','DELETE')}}
-                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-                {!!Form::close()!!} --}}
+  
 </div>
-@endsection
+
+</body>
+
+
+
