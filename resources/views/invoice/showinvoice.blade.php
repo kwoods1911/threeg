@@ -23,7 +23,7 @@
     <p>Customer Name: {{$invoice->customer_name}} </p>
 </div>
 
-{{-- <a href="#" class="btn btn-primary">Download Invoice</a> --}}
+<a href="{{ route('download.invoice', $invoice->id) }}" class="btn btn-primary">Download Invoice</a>
 <table class="table">
     <tr>
         <th>Item</th>

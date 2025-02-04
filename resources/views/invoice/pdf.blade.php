@@ -27,7 +27,7 @@
 
         <div class="w-half">
         <p>Invoice    #{{$invoice->id}}</p>
-        <p>Date:       {{$invoice->created_at}}</p>
+        <p>Date:  {{$invoice->created_at}}</p>
         <p>Created By: {{$invoice->manager_name}}</p>
             <p>Customer ID: {{$invoice->customer_id}} </p>
             <p>Customer Name: {{$invoice->customer_name}} </p>
