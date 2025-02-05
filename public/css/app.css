@@ -184,13 +184,10 @@ grey: #a8a8a8
 #section-3{
   margin-top: 52px;
   margin-bottom: 52px;
-  /* background-color: #ffcc00; */
+
   color:#333;
 }
 
-/* #card-background{
-  background-color: #333;
-} */
 
 .navBarBottom{
   border-bottom: 0.5px solid #8d8e90;
@@ -875,15 +872,17 @@ pre code {
   color:#333;
 }
 
+.view-bill-container{
+  margin:30px;
+}
+
+.invoice-header{
+  margin-top: 30px;  
+}
+
 .content-container{
   color:#fff;
 }
-
-/* .package-details-container{
-background-color: #d0d7db;
-} */
-
-
 
 .services-container{
   color:#333;
