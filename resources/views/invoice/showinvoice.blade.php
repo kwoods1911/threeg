@@ -6,31 +6,48 @@
     <a href="/inventorymanagement/{{$invoice->packageid}}" class="btn btn-primary">
         <span><<</span>
         Go Back</a>
-<h1>THREE G SHIPPING LTD.</h1>
-<span>
-    #123 Johnson St. Nassau
-    New Providence Bahamas
-    Tel: 242-333-1290
-</span>
-<h1>NOT A RECEIPT</h1>
-<p>Invoice    #{{$invoice->id}}</p>
-<p>Date:       {{$invoice->created_at}}</p>
-<p>Created By: {{$invoice->manager_name}}</p>
+
+        <div class="view-bill-container">
+                <h1>THREE G SHIPPING LTD.</h1>
+           <address>
+                 #123 Johnson St. Nassau
+                <br>
+                New Providence Bahamas
+                <br>
+                Tel: 242-333-1290
+           </address>
+           
+        <div class="invoice-header">
+            Invoice    #{{$invoice->id}}
+            <br>
+            Date:       {{$invoice->created_at}}
+            <br>
+           Created By: {{$invoice->manager_name}}
+           <br>
+        </div>
+        
+        
+        
+        <div class="invoice-header">
+            Customer ID: {{$invoice->customer_id}}
+            <br>
+            Customer Name: {{$invoice->customer_name}}
+        </div>
+
+        </div>
 
 
-<div>
-    <p>Customer ID: {{$invoice->customer_id}} </p>
-    <p>Customer Name: {{$invoice->customer_name}} </p>
-</div>
-
-{{-- <a href="#" class="btn btn-primary">Download Invoice</a> --}}
-<table class="table">
-    <tr>
-        <th>Item</th>
-        <th>Price</th>
-        <th>VAT(12%)</th>
-        <th>Total</th>
-    </tr>
+<a href="{{ route('download.invoice', $invoice->id) }}" class="btn btn-primary">Download Invoice</a>
+<table class="table table-hover">
+    <thead class="table-primary">
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>VAT(12%)</th>
+                <th>Total</th>
+            </tr>
+    </thead>
+    
 
     <tr>
         <td>Freight: {{$invoice->package_weight}} (LBS)</td>
@@ -59,7 +76,7 @@
     </tr>
 
     <tr>
-        <td>Final</td>
+        <td><b>Final</b></td>
         <td>$ {{round($invoice->subtotal,2)}}</td>
         <td>$ {{round($invoice->subtotal_vat,2)}}</td>
         <td>$ {{round($invoice->final_total,2)}}</td>

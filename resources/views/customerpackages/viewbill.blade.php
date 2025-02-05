@@ -6,34 +6,46 @@
 <div class="container">
     <div class="view-bill-container">
         <h1>THREE G SHIPPING LTD.</h1>
-        <span>
+        <address>
             #123 Johnson St. Nassau
             <br>
             New Providence Bahamas
             <br>
             Tel: 242-333-1290
-        </span>
-        <h1>NOT A RECEIPT</h1>
-        <p>Invoice    #{{$invoice->id}}</p>
-        <p>Date:       {{$invoice->created_at}}</p>
-        <p>Created By: {{$invoice->manager_name}}</p>
-        
-        
-        <div>
-            <p>Customer ID: {{$invoice->customer_id}} </p>
-            <p>Customer Name: {{$invoice->customer_name}} </p>
+        </address>
+
+        <div class="invoice-header">
+            Invoice    #{{$invoice->id}}
+            <br>
+            Date:       {{$invoice->created_at}}
+            <br>
+           Created By: {{$invoice->manager_name}}
+           <br>
         </div>
         
-        {{-- <a href="#" class="btn btn-primary">Download Invoice</a> --}}
+        
+        
+        <div class="invoice-header">
+            Customer ID: {{$invoice->customer_id}}
+            <br>
+            Customer Name: {{$invoice->customer_name}}
+        </div>
+           
+       
+        
+       
     </div>
-    
-    <table class="table">
+    <a href="{{ route('download.invoice', $invoice->id) }}" class="btn btn-primary">Download Invoice</a>
+    <table class="table table-hover">
+    <thead class="table-primary">
         <tr>
             <th>Item</th>
             <th>Price</th>
             <th>VAT(12%)</th>
             <th>Total</th>
         </tr>
+    </thead>
+
     
         <tr>
             <td>Freight: {{$invoice->package_weight}} (LBS)</td>
@@ -62,7 +74,7 @@
         </tr>
     
         <tr>
-            <td>Final</td>
+            <td><b>Final</b></td>
             <td>$ {{round($invoice->subtotal,2)}}</td>
             <td>$ {{round($invoice->subtotal_vat,2)}}</td>
             <td>$ {{round($invoice->final_total,2)}}</td>
@@ -76,11 +88,7 @@
         This document does not confirm that the item has been paid for.
         Package MUST BE collected within 5 business days of arriving to Nassau. Packages left after 30days will be sold to cover the costs.
     </p>
-    
-    {{-- <h3>Delete Invoice:</h3>
-                {!!Form::open(['action' => ['App\Http\Controllers\ModifyInvoiceController@destroy', $invoice->id], 'method' => 'POST'])!!}
-                {{Form::hidden('_method','DELETE')}}
-                {{Form::submit('Delete',['class' => 'btn btn-danger'])}}
-                {!!Form::close()!!} --}}
+   
+   
 </div>
 @endsection
